@@ -7,6 +7,13 @@ jobs:
   checkout:
     runs-on: ubuntu-latest
     steps:
+    - name: call rate limit before
+      run: |
+        curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/rate_limit
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
+        token: ${{ secrets.REPOSITORY_TOKEN }}
+    - name: call rate limit after
+      run: |
+        curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/rate_limit

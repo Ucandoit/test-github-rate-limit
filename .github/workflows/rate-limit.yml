@@ -1,12 +1,12 @@
-name: Test rate limit
+# name: Test rate limit
 
-on:
-  pull_request:
+# on:
+#   pull_request:
 
-jobs:
-  echo-rate-limit:
-    runs-on: ubuntu-latest
-    steps:
-    - name: call rate limit
-      run: |
-        curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/rate_limit
+# jobs:
+#   echo-rate-limit:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: call rate limit
+#       run: |
+#         curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/rate_limit

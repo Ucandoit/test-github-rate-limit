@@ -17,3 +17,12 @@ jobs:
     - name: call rate limit after
       run: |
         curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/rate_limit
+    - client-ok:
+      runs-on: ubuntu-latest
+      if: always()
+      steps:
+        - uses: technote-space/workflow-conclusion-action@v3
+        - run: echo 'neutral, success, skipped' | grep -i ${{ env.WORKFLOW_CONCLUSION }}
+    - name: call rate limit after
+      run: |
+        curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/rate_limit
